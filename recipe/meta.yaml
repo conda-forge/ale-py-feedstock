@@ -1,4 +1,4 @@
-{% set version = "0.8.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 9a9f1ad6cd61dfb26895314d409ba69da038b7def295b509964e579027fefd99
+  sha256: 28960616cd89c18925ced7bbdeec01ab0b2ebd2d8ce5b7c88930e97381b4c3b5
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
@@ -17,7 +17,7 @@ source:
     - patches/0006-fix-installation-on-windows.patch
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
