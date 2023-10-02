@@ -17,7 +17,7 @@ source:
     - patches/0006-fix-installation-on-windows.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
