@@ -1,4 +1,4 @@
-{% set version = "0.8.1" %}
+{% set version = "0.9.0" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 28960616cd89c18925ced7bbdeec01ab0b2ebd2d8ce5b7c88930e97381b4c3b5
+  sha256: e7ac6ed82df28b4c605f47d5051748ae7631d7f25f56f5ad2bb8e88cddcea15a
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
@@ -17,7 +17,7 @@ source:
     - patches/0006-fix-installation-on-windows.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -25,6 +25,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     # for llvm-ar
     - llvm-tools             # [osx]
     - cmake
