@@ -29,4 +29,4 @@ sdl2:
 target_platform:
 - osx-arm64
 zlib:
-- '1.2'
+- '1'
