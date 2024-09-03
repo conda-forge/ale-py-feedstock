@@ -14,6 +14,7 @@ source:
     - patches/0003-avoid-vcpkg-toolchain.patch
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
+    - patches/0006-use-find-python.patch
 
 build:
   number: 1
