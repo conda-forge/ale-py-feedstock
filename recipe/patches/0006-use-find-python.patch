@@ -1,0 +1,10 @@
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index 337b61aa..208cffad 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
++find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
+ 
+ set(PYBIND11_VER 2.13.1)
+ 
