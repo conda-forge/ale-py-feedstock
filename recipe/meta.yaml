@@ -36,6 +36,7 @@ requirements:
     - python
     - pybind11
     - pip
+    - setuptools
     - libiconv
     - sdl2
     - zlib
