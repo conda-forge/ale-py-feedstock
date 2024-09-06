@@ -14,9 +14,10 @@ source:
     - patches/0003-avoid-vcpkg-toolchain.patch
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
+    - patches/0006-use-find-python.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -29,13 +30,11 @@ requirements:
     - llvm-tools             # [osx]
     - cmake
     - ninja
-    - pybind11                               # [build_platform != target_platform]
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
     - pybind11
     - pip
+    - setuptools
     - libiconv
     - sdl2
     - zlib

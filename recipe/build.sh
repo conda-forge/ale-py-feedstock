@@ -14,8 +14,8 @@ cmake ${CMAKE_ARGS} -G Ninja \
     -DBUILD_CPP_LIB=ON \
     -DBUILD_PYTHON_LIB=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DPython_EXECUTABLE=$PYTHON \
-    -DPython3_EXECUTABLE=$PYTHON \
+    -DPython_EXECUTABLE=${PYTHON} \
+    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
     -DCMAKE_CXX_COMPILER_RANLIB=$RANLIB \
     -DCMAKE_C_COMPILER_RANLIB=$RANLIB \
     -DSDL_SUPPORT=ON \
