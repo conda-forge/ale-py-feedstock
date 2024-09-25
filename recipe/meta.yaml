@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b7cfa312c2c538f4e03e0b308c32f66c335f87b9cd4d495698601063ea9d65b7
+  sha256: 16ebd69060202b8b7ee6e2379fcbe388517e8bd58f07730b4b0acfdc8aa0e6eb
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
