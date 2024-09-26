@@ -44,7 +44,7 @@ requirements:
     - importlib-metadata
     - importlib-resources
     - typing-extensions
-    - numpy
+    - numpy <2
 
 test:
   imports:
