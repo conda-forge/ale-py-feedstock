@@ -15,6 +15,9 @@ source:
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
     - patches/0006-use-find-python.patch
+    # upstream seems to have disabled NumPy 2.0 for CI reasons only
+    # see https://github.com/Farama-Foundation/Arcade-Learning-Environment/pull/533
+    - patches/0007-allow-numpy-20.patch
 
 build:
   number: 0
@@ -44,7 +47,7 @@ requirements:
     - importlib-metadata
     - importlib-resources
     - typing-extensions
-    - numpy <2
+    - numpy
 
 test:
   imports:
