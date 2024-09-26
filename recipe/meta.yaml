@@ -1,4 +1,4 @@
-{% set version = "0.9.1" %}
+{% set version = "0.10.0" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: eaf60c7c3a6450decff3deee02b0c46224537d322cc2f77abed565a835f2d524
+  sha256: 16ebd69060202b8b7ee6e2379fcbe388517e8bd58f07730b4b0acfdc8aa0e6eb
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
@@ -15,9 +15,12 @@ source:
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
     - patches/0006-use-find-python.patch
+    # upstream seems to have disabled NumPy 2.0 for CI reasons only
+    # see https://github.com/Farama-Foundation/Arcade-Learning-Environment/pull/533
+    - patches/0007-allow-numpy-20.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:

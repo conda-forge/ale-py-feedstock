@@ -1,7 +1,7 @@
-diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
-index 337b61aa..208cffad 100644
---- a/src/python/CMakeLists.txt
-+++ b/src/python/CMakeLists.txt
+diff --git a/src/ale/python/CMakeLists.txt b/src/ale/python/CMakeLists.txt
+index 337b61aa0..208cffad7 100644
+--- a/src/ale/python/CMakeLists.txt
++++ b/src/ale/python/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
 +find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)

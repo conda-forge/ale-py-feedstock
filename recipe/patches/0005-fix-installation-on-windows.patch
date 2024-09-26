@@ -8,10 +8,10 @@ Subject: [PATCH 5/5] fix installation on windows
  src/python/CMakeLists.txt | 13 -------------
  2 files changed, 1 insertion(+), 14 deletions(-)
 
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index b7bac39..77a3bc1 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
+diff --git a/src/ale/CMakeLists.txt b/src/ale/CMakeLists.txt
+index af7b8b83e..ac6d9e37b 100644
+--- a/src/ale/CMakeLists.txt
++++ b/src/ale/CMakeLists.txt
 @@ -66,7 +66,7 @@ if (BUILD_PYTHON_LIB)
  endif()
  
@@ -21,10 +21,10 @@ index b7bac39..77a3bc1 100644
    include(GNUInstallDirs)
    include(CMakePackageConfigHelpers)
  
-diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
-index 337b61a..b264f68 100644
---- a/src/python/CMakeLists.txt
-+++ b/src/python/CMakeLists.txt
+diff --git a/src/ale/python/CMakeLists.txt b/src/ale/python/CMakeLists.txt
+index 337b61aa0..b264f6852 100644
+--- a/src/ale/python/CMakeLists.txt
++++ b/src/ale/python/CMakeLists.txt
 @@ -26,19 +26,6 @@ set_target_properties(ale-py PROPERTIES
      PREFIX "${PYTHON_MODULE_PREFIX}"
      SUFFIX "${PYTHON_MODULE_EXTENSION}")
