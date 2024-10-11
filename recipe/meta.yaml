@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 7e0473de29b63f59054f8a165a968cf5a168bd9c07444d377a1f70401d268894
   patches:
     # upstream avoids ninja on windows, but we don't need to
@@ -58,7 +58,7 @@ test:
     - pytest
 
 about:
-  home: https://github.com/mgbellemare/Arcade-Learning-Environment
+  home: https://github.com/Farama-Foundation/Arcade-Learning-Environment
   license: GPL-2.0-only
   license_family: GPL
   license_file: LICENSE.md
