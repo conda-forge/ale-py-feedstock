@@ -17,7 +17,7 @@ source:
     - patches/0006-use-find-python.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -72,3 +72,4 @@ extra:
   recipe-maintainers:
     - h-vetinari
     - Tobias-Fischer
+    - pseudo-rnd-thoughts
