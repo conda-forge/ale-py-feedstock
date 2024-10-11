@@ -51,8 +51,11 @@ test:
     - ale_py
   requires:
     - pip
+    - pytest
+    - gymnasium
   commands:
     - pip check
+    - pytest -v tests/
 
 about:
   home: https://github.com/mgbellemare/Arcade-Learning-Environment

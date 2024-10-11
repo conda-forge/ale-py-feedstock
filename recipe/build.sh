@@ -1,6 +1,10 @@
 #!/bin/bash
 set -ex
 
+ls
+
+bash scripts/download_unpack_roms.sh
+
 mkdir build
 cd build
 
