@@ -55,7 +55,7 @@ test:
     - gymnasium
   commands:
     - pip check
-    - pytest -v tests/
+    - pytest
 
 about:
   home: https://github.com/mgbellemare/Arcade-Learning-Environment
