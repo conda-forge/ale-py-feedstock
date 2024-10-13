@@ -47,6 +47,8 @@ requirements:
     - numpy
 
 test:
+  source_files:
+    - tests/
   imports:
     - ale_py
   requires:
