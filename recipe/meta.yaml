@@ -44,7 +44,7 @@ requirements:
     - importlib-metadata
     - importlib-resources
     - typing-extensions
-    - numpy>=1.21.0
+    - numpy >=1.21.0
 
 test:
   source_files:
@@ -54,7 +54,7 @@ test:
   requires:
     - pip
     - pytest
-    - gymnasium>=1.0.0
+    - gymnasium >=1.0.0
   commands:
     - pip check
     - pytest
