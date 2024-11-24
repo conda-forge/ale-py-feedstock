@@ -3,7 +3,7 @@ About ale-py-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ale-py-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/mgbellemare/Arcade-Learning-Environment
+Home: https://github.com/Farama-Foundation/Arcade-Learning-Environment
 
 Package license: GPL-2.0-only
 
@@ -373,4 +373,5 @@ Feedstock Maintainers
 
 * [@Tobias-Fischer](https://github.com/Tobias-Fischer/)
 * [@h-vetinari](https://github.com/h-vetinari/)
+* [@pseudo-rnd-thoughts](https://github.com/pseudo-rnd-thoughts/)
 
