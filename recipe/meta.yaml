@@ -54,7 +54,7 @@ test:
   requires:
     - pip
     - pytest
-    - gymnasium >=1.0.0
+    - gymnasium >=1.0.0  # [py<313]
   commands:
     - pip check
     - pytest
