@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '18'
 libiconv:
 - '1'
 macos_machine:
@@ -28,8 +28,5 @@ sdl2:
 - '2'
 target_platform:
 - osx-arm64
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1'
