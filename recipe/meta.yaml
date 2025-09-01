@@ -38,8 +38,10 @@ requirements:
     - libiconv
     - sdl2
     - zlib
+    - libopencv
   run:
     - python
+    - py-opencv
     # not clear where these come from, but enforced by pip check
     - importlib-metadata
     - importlib-resources
