@@ -8,14 +8,14 @@ Subject: [PATCH 2/5] build shared libs
  1 file changed, 1 insertion(+)
 
 diff --git a/setup.py b/setup.py
-index 717e943..a7881ea 100644
+index e94a3ff6..33f103a8 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -45,6 +45,7 @@ class CMakeBuild(build_ext):
-             "-DBUILD_CPP_LIB=OFF",
-             "-DBUILD_PYTHON_LIB=ON",
-             "-GNinja",
-+            "-DBUILD_SHARED_LIBS=ON",
-         ]
-         build_args = []
+@@ -42,6 +42,7 @@ def build_extension(self, ext):
  
+         cmake_args = [
+             f"-GNinja",
++            f"-DBUILD_SHARED_LIBS:BOOL=ON",
+             f"-DCMAKE_BUILD_TYPE={config}",
+             f"-DPython3_EXECUTABLE={sys.executable}",
+             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
