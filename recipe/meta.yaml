@@ -1,4 +1,4 @@
-{% set version = "0.11.2" %}
+{% set version = "0.11.0" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d6ac9406690bb3533b37a99253bdfc59bc27779c5e1b6855c763d0b367bcbf96
+  sha256: 300717009d18c784bf4b407f608e269d7c87e40769c277206230011352e65b97
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
