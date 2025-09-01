@@ -3,16 +3,23 @@ About ale-py-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ale-py-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/mgbellemare/Arcade-Learning-Environment
+Home: https://github.com/Farama-Foundation/Arcade-Learning-Environment
 
 Package license: GPL-2.0-only
 
 Summary: The Arcade Learning Environment (ALE) -- a platform for AI research.
 
-Development: https://github.com/mgbellemare/Arcade-Learning-Environment
+Development: https://github.com/Farama-Foundation/Arcade-Learning-Environment
 
 The Arcade Learning Environment (ALE) is a simple framework that allows
 researchers and hobbyists to develop AI agents for Atari 2600 games.
+
+A difference between the PyPI distribution of ale-py and the conda-forge package
+is that the conda-forge package was unable to verify the copyright status of the ROM
+required to use the library, and if conda-forge is allowed to redistribute them.
+For these reason, to actually work with the library, if you are legally allowed to
+access the ROMs, download them (for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh
+script) and then set the `ALE_ROMS_DIR` environment variable to point to the directory that contains the ROMs.
 
 
 Current build status
