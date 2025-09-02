@@ -19,6 +19,9 @@ source:
 
 build:
   number: 0
+  # opencv still needs to be migrated to python 3.14,
+  # see https://github.com/conda-forge/ale-py-feedstock/pull/26#issuecomment-3243635414
+  skip: true  # [py==314]
 
 requirements:
   build:
