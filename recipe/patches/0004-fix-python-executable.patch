@@ -1,19 +1,19 @@
-From f15d7662fe1c25e9a023ed24b807ef733d5733e0 Mon Sep 17 00:00:00 2001
+From 36089ca2b7681f2c92a7c8c347f25c8968543ce2 Mon Sep 17 00:00:00 2001
 From: Tobias Fischer <info@tobiasfischer.info>
 Date: Wed, 7 Dec 2022 12:15:48 +1000
-Subject: [PATCH 4/5] fix python executable
+Subject: [PATCH 4/6] fix python executable
 
 ---
  setup.py | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/setup.py b/setup.py
-index a7881ea..cb85844 100644
+index 33f103a..cbf2625 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -38,6 +38,7 @@ class CMakeBuild(build_ext):
- 
-         cmake_args = [
+@@ -44,6 +44,7 @@ class CMakeBuild(build_ext):
+             f"-GNinja",
+             f"-DBUILD_SHARED_LIBS:BOOL=ON",
              f"-DCMAKE_BUILD_TYPE={config}",
 +            f"-DPython_EXECUTABLE={sys.executable}",
              f"-DPython3_EXECUTABLE={sys.executable}",
