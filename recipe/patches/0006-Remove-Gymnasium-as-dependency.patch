@@ -1,0 +1,44 @@
+From c23c7b1257065f895a1707e2c888d1d7a9e2f8e6 Mon Sep 17 00:00:00 2001
+From: pseudo-rnd-thoughts <mark.m.towers@gmail.com>
+Date: Fri, 18 Jul 2025 23:50:58 +0100
+Subject: [PATCH 6/6] Remove Gymnasium as dependency
+
+---
+ src/ale/python/__init__.py | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
+
+diff --git a/src/ale/python/__init__.py b/src/ale/python/__init__.py
+index 051ce51..5e65f2e 100644
+--- a/src/ale/python/__init__.py
++++ b/src/ale/python/__init__.py
+@@ -37,20 +37,19 @@ __all__ = ["Action", "ALEInterface", "ALEState", "LoggerMode", "SDL_SUPPORT"]
+ 
+ 
+ try:
++    from ale_py.env import AtariEnv, AtariEnvStepMetadata
++    from ale_py.vector_env import AtariVectorEnv
++
++    __all__ += ["AtariEnv", "AtariEnvStepMetadata", "AtariVectorEnv"]
++
++    from ale_py.registration import register_v0_v4_envs, register_v5_envs
++
++    register_v0_v4_envs()
++    register_v5_envs()
++
+     # As the vector interface is an optional cmake build, it's not assumed to exist
+     from ale_py._ale_py import ALEVectorInterface
+ 
+     __all__ += ["ALEVectorInterface"]
+ except ImportError:
+     pass
+-
+-
+-from ale_py.env import AtariEnv, AtariEnvStepMetadata
+-from ale_py.vector_env import AtariVectorEnv
+-
+-__all__ += ["AtariEnv", "AtariEnvStepMetadata", "AtariVectorEnv"]
+-
+-from ale_py.registration import register_v0_v4_envs, register_v5_envs
+-
+-register_v0_v4_envs()
+-register_v5_envs()

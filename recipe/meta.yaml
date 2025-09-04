@@ -14,8 +14,8 @@ source:
     - patches/0003-avoid-vcpkg-toolchain.patch
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
-    - patches/0006-use-find-python.patch
-    - patches/0007-backport-pr-631.patch
+    # backport https://github.com/Farama-Foundation/Arcade-Learning-Environment/pull/631
+    - patches/0006-Remove-Gymnasium-as-dependency.patch
 
 build:
   number: 0
