@@ -8,15 +8,19 @@ Subject: [PATCH 1/5] unconditionally use ninja
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 3bd65e4..717e943 100644
+index 99ffcf997..e94a3ff60 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -44,10 +44,11 @@ class CMakeBuild(build_ext):
-             "-DSDL_DYNLOAD=ON",
-             "-DBUILD_CPP_LIB=OFF",
-             "-DBUILD_PYTHON_LIB=ON",
-+            "-GNinja",
-         ]
+@@ -41,6 +41,7 @@ def build_extension(self, ext):
+         cmake_generator = os.environ.get("CMAKE_GENERATOR", "")
+ 
+         cmake_args = [
++            f"-GNinja",
+             f"-DCMAKE_BUILD_TYPE={config}",
+             f"-DPython3_EXECUTABLE={sys.executable}",
+             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
+@@ -58,7 +59,7 @@ def build_extension(self, ext):
+             cmake_args.append("-DBUILD_VECTOR_XLA_LIB=ON")
          build_args = []
  
 -        if self.compiler.compiler_type != "msvc":
@@ -24,9 +28,9 @@ index 3bd65e4..717e943 100644
              # Using Ninja-build since it a) is available as a wheel and b)
              # multithreads automatically. MSVC would require all variables be
              # exported for Ninja to pick it up, which is a little tricky to do.
-@@ -65,7 +66,7 @@ class CMakeBuild(build_ext):
-                 except ImportError:
-                     pass
+@@ -79,7 +80,7 @@ def build_extension(self, ext):
+                             "-GNinja",
+                         ]
  
 -        else:
 +        elif False:

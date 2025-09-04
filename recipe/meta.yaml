@@ -1,12 +1,12 @@
-{% set version = "0.10.2" %}
+{% set version = "0.11.0" %}
 
 package:
   name: ale-py
   version: {{ version }}
 
 source:
-  url: https://github.com/mgbellemare/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 901a2dd3a5709361d5e6f95eb4798a749870c924a549c20b516b12da4fa43457
+  url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 300717009d18c784bf4b407f608e269d7c87e40769c277206230011352e65b97
   patches:
     # upstream avoids ninja on windows, but we don't need to
     - patches/0001-unconditionally-use-ninja.patch
@@ -15,9 +15,13 @@ source:
     - patches/0004-fix-python-executable.patch
     - patches/0005-fix-installation-on-windows.patch
     - patches/0006-use-find-python.patch
+    - patches/0007-backport-pr-631.patch
 
 build:
-  number: 1
+  number: 0
+  # opencv still needs to be migrated to python 3.14,
+  # see https://github.com/conda-forge/ale-py-feedstock/pull/26#issuecomment-3243635414
+  skip: true  # [py==314]
 
 requirements:
   build:
@@ -38,8 +42,10 @@ requirements:
     - libiconv
     - sdl2
     - zlib
+    - libopencv
   run:
     - python
+    - py-opencv
     # not clear where these come from, but enforced by pip check
     - importlib-metadata
     - importlib-resources
@@ -55,7 +61,7 @@ test:
     - pip check
 
 about:
-  home: https://github.com/mgbellemare/Arcade-Learning-Environment
+  home: https://github.com/Farama-Foundation/Arcade-Learning-Environment
   license: GPL-2.0-only
   license_family: GPL
   license_file: LICENSE.md
@@ -63,7 +69,14 @@ about:
   description: |
     The Arcade Learning Environment (ALE) is a simple framework that allows
     researchers and hobbyists to develop AI agents for Atari 2600 games.
-  dev_url: https://github.com/mgbellemare/Arcade-Learning-Environment
+
+    A difference between the PyPI distribution of ale-py and the conda-forge package
+    is that the conda-forge package was unable to verify the copyright status of the ROM
+    required to use the library, and if conda-forge is allowed to redistribute them.
+    For these reason, to actually work with the library, if you are legally allowed to
+    access the ROMs, download them (for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh 
+    script) and then set the `ALE_ROMS_DIR` environment variable to point to the directory that contains the ROMs.
+  dev_url: https://github.com/Farama-Foundation/Arcade-Learning-Environment
 
 extra:
   recipe-maintainers:
