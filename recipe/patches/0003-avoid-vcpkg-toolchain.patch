@@ -1,17 +1,17 @@
-From 96961526dd54206b0bc25b63c6686ff2af374579 Mon Sep 17 00:00:00 2001
+From cb5e72d5575f764f0aca7eb41875fb27aad644bc Mon Sep 17 00:00:00 2001
 From: Tobias Fischer <info@tobiasfischer.info>
 Date: Wed, 7 Dec 2022 06:34:34 +1000
-Subject: [PATCH 3/5] avoid vcpkg toolchain
+Subject: [PATCH 3/6] avoid vcpkg toolchain
 
 ---
  CMakeLists.txt | 15 ---------------
  1 file changed, 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2b2032e..cefe88c 100644
+index ea6b16e..7396a72 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -30,21 +30,6 @@ if(DEFINED ENV{VCPKG_DEFAULT_TRIPLET} AND NOT DEFINED VCPKG_TARGET_TRIPLET)
+@@ -41,21 +41,6 @@ if(DEFINED ENV{VCPKG_DEFAULT_TRIPLET} AND NOT DEFINED VCPKG_TARGET_TRIPLET)
        CACHE STRING "")
  endif()
  

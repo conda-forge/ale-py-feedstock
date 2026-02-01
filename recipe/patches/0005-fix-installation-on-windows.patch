@@ -1,18 +1,18 @@
-From a7c9e8bf0e8db2a384674413b44b16a0cc6e85dc Mon Sep 17 00:00:00 2001
+From 7984804c1461c27cd200a5c32ccffcbb97b94e90 Mon Sep 17 00:00:00 2001
 From: Tobias Fischer <info@tobiasfischer.info>
 Date: Wed, 7 Dec 2022 19:40:22 +1000
-Subject: [PATCH 5/5] fix installation on windows
+Subject: [PATCH 5/6] fix installation on windows
 
 ---
- src/CMakeLists.txt        |  2 +-
- src/python/CMakeLists.txt | 13 -------------
+ src/ale/CMakeLists.txt        |  2 +-
+ src/ale/python/CMakeLists.txt | 13 -------------
  2 files changed, 1 insertion(+), 14 deletions(-)
 
 diff --git a/src/ale/CMakeLists.txt b/src/ale/CMakeLists.txt
-index af7b8b83e..ac6d9e37b 100644
+index df594a5..7826c5d 100644
 --- a/src/ale/CMakeLists.txt
 +++ b/src/ale/CMakeLists.txt
-@@ -66,7 +66,7 @@ if (BUILD_PYTHON_LIB)
+@@ -77,7 +77,7 @@ if (BUILD_PYTHON_LIB)
  endif()
  
  # Install cpp-lib and CMake config & pkg-config
@@ -22,10 +22,10 @@ index af7b8b83e..ac6d9e37b 100644
    include(CMakePackageConfigHelpers)
  
 diff --git a/src/ale/python/CMakeLists.txt b/src/ale/python/CMakeLists.txt
-index 337b61aa0..b264f6852 100644
+index 1eb84c7..592a9e9 100644
 --- a/src/ale/python/CMakeLists.txt
 +++ b/src/ale/python/CMakeLists.txt
-@@ -26,19 +26,6 @@ set_target_properties(ale-py PROPERTIES
+@@ -51,19 +51,6 @@ set_target_properties(ale-py PROPERTIES
      PREFIX "${PYTHON_MODULE_PREFIX}"
      SUFFIX "${PYTHON_MODULE_EXTENSION}")
  
