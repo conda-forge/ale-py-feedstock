@@ -15,7 +15,7 @@ docker_image:
 libiconv:
 - '1'
 libopencv:
-- 4.13.0
+- 5.0.0
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -26,8 +26,5 @@ sdl2:
 - '2'
 target_platform:
 - linux-ppc64le
-zip_keys:
-- - python
-  - channel_sources
 zlib:
 - '1'
