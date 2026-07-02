@@ -27,6 +27,7 @@ requirements:
     - llvm-tools                             # [osx]
     - cmake
     - ninja
+    - make                                   # [unix]
   host:
     - python
     - nanobind
