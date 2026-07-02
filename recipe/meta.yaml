@@ -8,15 +8,11 @@ source:
   url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
   sha256: bdfa0faafb1ae4311c8c240b9a6f8b3ac02504b13787fd11e81856a9f21a5cb1
   patches:
-    # upstream avoids ninja on windows, but we don't need to
     - patches/0001-avoid-vcpkg-toolchain.patch
     - patches/0002-fix-installation-on-windows.patch
 
 build:
   number: 0
-  # opencv still needs to be migrated to python 3.14,
-  # see https://github.com/conda-forge/ale-py-feedstock/pull/26#issuecomment-3243635414
-  skip: true  # [py==314]
 
 requirements:
   build:
@@ -26,7 +22,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     # for llvm-ar
-    - llvm-tools             # [osx]
+    - llvm-tools                             # [osx]
     - cmake
     - ninja
   host:
