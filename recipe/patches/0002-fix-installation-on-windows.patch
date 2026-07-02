@@ -1,0 +1,22 @@
+From a7c9e8bf0e8db2a384674413b44b16a0cc6e85dc Mon Sep 17 00:00:00 2001
+From: Tobias Fischer <info@tobiasfischer.info>
+Date: Wed, 7 Dec 2022 19:40:22 +1000
+Subject: [PATCH 2/2] fix installation on windows
+
+---
+ src/ale/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ale/CMakeLists.txt b/src/ale/CMakeLists.txt
+index 92d5909..d511ff9 100644
+--- a/src/ale/CMakeLists.txt
++++ b/src/ale/CMakeLists.txt
+@@ -86,7 +86,7 @@ if (BUILD_WASM_LIB)
+ endif()
+ 
+ # Install cpp-lib and CMake config & pkg-config
+-if (UNIX AND BUILD_CPP_LIB)
++if (BUILD_CPP_LIB)
+   include(GNUInstallDirs)
+   include(CMakePackageConfigHelpers)
+ 
