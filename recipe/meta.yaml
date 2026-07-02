@@ -10,6 +10,7 @@ source:
   patches:
     - patches/0001-avoid-vcpkg-toolchain.patch
     - patches/0002-fix-installation-on-windows.patch
+    - patches/0003-do-not-vendor-sdl2.patch
 
 build:
   number: 0
