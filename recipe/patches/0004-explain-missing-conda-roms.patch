@@ -1,0 +1,33 @@
+From 0e4c9acfd4d50c28da8a321496bf313ae93a4c54 Mon Sep 17 00:00:00 2001
+From: Tobias Fischer <info@tobiasfischer.info>
+Date: Fri, 3 Jul 2026 10:30:00 +1000
+Subject: [PATCH 4/4] explain missing conda ROMs
+
+---
+ src/ale/python/roms/__init__.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/ale/python/roms/__init__.py b/src/ale/python/roms/__init__.py
+index 0d4f0db..71a2eb9 100644
+--- a/src/ale/python/roms/__init__.py
++++ b/src/ale/python/roms/__init__.py
+@@ -51,6 +51,17 @@ def get_rom_path(name: str) -> Path | None:
+         warnings.warn(f"Rom {name} not supported.")
+         return None
+ 
++    if not bin_path.is_file():
++        raise FileNotFoundError(
++            f"ROM {bin_file} was not found in {roms_dir.absolute()}. "
++            "The conda-forge ale-py package does not include Atari ROMs "
++            "because their copyright status could not be verified. "
++            "If you can legally access the ROMs, download them "
++            "(for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh script)"
++            "and set the ALE_ROMS_DIR environment variable to the directory "
++            "containing the .bin files."
++        )
++
+     # check the rom hash
+     with open(bin_path, "rb") as bin_fp:
+         md5 = hashlib.md5()
+-- 
+2.50.1
