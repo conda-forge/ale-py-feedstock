@@ -28,5 +28,5 @@ cd ..
 set CIBUILDWHEEL=1
 set "GITHUB_REF=%PKG_VERSION%"
 
-%PYTHON% -m pip install .
+%PYTHON% -m pip install . --no-deps --no-build-isolation
 if %ERRORLEVEL% neq 0 exit 1
