@@ -1,4 +1,4 @@
-{% set version = "0.12.0" %}
+{% set version = "0.12.1" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: bdfa0faafb1ae4311c8c240b9a6f8b3ac02504b13787fd11e81856a9f21a5cb1
+  sha256: ade05f76416b4a49e8d6e5cc9bebb0745ae69f813aaeabe5813043f288db8ab3
   patches:
     - patches/0001-avoid-vcpkg-toolchain.patch
     - patches/0002-fix-installation-on-windows.patch
