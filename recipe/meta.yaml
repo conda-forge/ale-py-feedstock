@@ -14,7 +14,7 @@ source:
     - patches/0004-explain-missing-conda-roms.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
