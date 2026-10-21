@@ -1,4 +1,4 @@
-{% set version = "0.12.0" %}
+{% set version = "0.12.1" %}
 
 package:
   name: ale-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 84d32e5ebf1ab040f28a014bc2a8991f668bad79094fab33203621efdea78db3
+  sha256: ade05f76416b4a49e8d6e5cc9bebb0745ae69f813aaeabe5813043f288db8ab3
   patches:
     - patches/0001-avoid-vcpkg-toolchain.patch
     - patches/0002-fix-installation-on-windows.patch
@@ -14,7 +14,7 @@ source:
     - patches/0004-explain-missing-conda-roms.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
