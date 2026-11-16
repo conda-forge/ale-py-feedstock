@@ -1,5 +1,3 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
 MACOSX_SDK_VERSION:
 - '11.0'
 c_stdlib:
@@ -17,7 +15,7 @@ cxx_compiler_version:
 libiconv:
 - '1'
 libopencv:
-- 5.0.0
+- 5.1.0
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
