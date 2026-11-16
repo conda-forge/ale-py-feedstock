@@ -9,7 +9,7 @@ cxx_compiler:
 libiconv:
 - '1'
 libopencv:
-- 5.0.0
+- 5.1.0
 pin_run_as_build:
   python:
     min_pin: x.x
