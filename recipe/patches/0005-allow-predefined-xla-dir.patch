@@ -1,0 +1,37 @@
+From 5b1c0f8e1d6a4b0f9a7d2c3e4f5061728394a5b6 Mon Sep 17 00:00:00 2001
+From: Tobias Fischer <info@tobiasfischer.info>
+Date: Thu, 19 Nov 2026 18:30:00 +1000
+Subject: [PATCH 5/5] allow passing XLA_DIR instead of importing jax with the
+ host python
+
+---
+ src/ale/python/CMakeLists.txt | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/src/ale/python/CMakeLists.txt b/src/ale/python/CMakeLists.txt
+index 1160519..519ba2a 100644
+--- a/src/ale/python/CMakeLists.txt
++++ b/src/ale/python/CMakeLists.txt
+@@ -14,12 +14,14 @@ if (BUILD_VECTOR_LIB AND BUILD_VECTOR_XLA_LIB)
+     # XLA Integration setup
+     message(STATUS "Python Executable: '${Python_EXECUTABLE}'")
+     message(STATUS "Python_SITELIB=${Python_SITELIB}, Python_SITEARCH=${Python_SITEARCH}")
+-    execute_process(
+-        COMMAND "${Python_EXECUTABLE}" "-c"
+-        "import sys; sys.path.append(r'${Python_SITELIB}'); sys.path.append(r'${Python_SITEARCH}'); from jax import ffi; print(ffi.include_dir())"
+-        OUTPUT_STRIP_TRAILING_WHITESPACE
+-        OUTPUT_VARIABLE XLA_DIR
+-    )
++    if (NOT DEFINED XLA_DIR)
++        execute_process(
++            COMMAND "${Python_EXECUTABLE}" "-c"
++            "import sys; sys.path.append(r'${Python_SITELIB}'); sys.path.append(r'${Python_SITEARCH}'); from jax import ffi; print(ffi.include_dir())"
++            OUTPUT_STRIP_TRAILING_WHITESPACE
++            OUTPUT_VARIABLE XLA_DIR
++        )
++    endif()
+     message(STATUS "XLA include directory: '${XLA_DIR}'")
+ 
+     # CUDA toolkit is optional: when found we additionally compile/link the GPU
+-- 
+2.50.1
