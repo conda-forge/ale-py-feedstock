@@ -1,11 +1,17 @@
-{% set version = "0.12.1" %}
+schema_version: 1
+
+context:
+  version: "0.12.1"
+  # the XLA interface needs the headers shipped with jaxlib at build time;
+  # jaxlib is not available on windows, ppc64le or for python <3.12
+  build_xla: ${{ unix and not ppc64le and match(python, ">=3.12") }}
 
 package:
   name: ale-py
-  version: {{ version }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/Farama-Foundation/Arcade-Learning-Environment/archive/refs/tags/v${{ version }}.tar.gz
   sha256: ade05f76416b4a49e8d6e5cc9bebb0745ae69f813aaeabe5813043f288db8ab3
   patches:
     - patches/0001-avoid-vcpkg-toolchain.patch
@@ -15,19 +21,27 @@ source:
 
 build:
   number: 0
+  script:
+    file: build
+    env:
+      BUILD_VECTOR_XLA_LIB: ${{ "ON" if build_xla else "OFF" }}
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - nanobind                               # [build_platform != target_platform]
-    - {{ compiler('cxx') }}
-    - {{ stdlib("c") }}
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - nanobind
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
     # for llvm-ar
-    - llvm-tools                             # [osx]
+    - if: osx
+      then: llvm-tools
     - cmake
     - ninja
-    - make                                   # [unix]
+    - if: unix
+      then: make
   host:
     - python
     - nanobind
@@ -38,6 +52,8 @@ requirements:
     - sdl2
     - zlib
     - libopencv
+    - if: build_xla
+      then: jax
   run:
     - python
     - py-opencv
@@ -47,18 +63,18 @@ requirements:
     - typing-extensions
     - numpy
 
-test:
-  imports:
-    - ale_py
-  requires:
-    - pip
-  commands:
-    - pip check
+tests:
+  - python:
+      imports:
+        - ale_py
+      pip_check: true
+  - if: build_xla
+    then:
+      script:
+        - python -c "import ale_py._ale_py as m; assert hasattr(m, 'VectorXLAReset') and hasattr(m, 'VectorXLAStep')"
 
 about:
-  home: https://github.com/Farama-Foundation/Arcade-Learning-Environment
   license: GPL-2.0-only
-  license_family: GPL
   license_file: LICENSE.md
   summary: The Arcade Learning Environment (ALE) -- a platform for AI research.
   description: |
@@ -69,9 +85,10 @@ about:
     is that the conda-forge package was unable to verify the copyright status of the ROM
     required to use the library, and if conda-forge is allowed to redistribute them.
     For these reason, to actually work with the library, if you are legally allowed to
-    access the ROMs, download them (for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh 
+    access the ROMs, download them (for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh
     script) and then set the `ALE_ROMS_DIR` environment variable to point to the directory that contains the ROMs.
-  dev_url: https://github.com/Farama-Foundation/Arcade-Learning-Environment
+  homepage: https://github.com/Farama-Foundation/Arcade-Learning-Environment
+  repository: https://github.com/Farama-Foundation/Arcade-Learning-Environment
 
 extra:
   recipe-maintainers:

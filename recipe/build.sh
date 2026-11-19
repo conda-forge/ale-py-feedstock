@@ -28,4 +28,7 @@ cd ..
 export CIBUILDWHEEL=1
 export GITHUB_REF=$PKG_VERSION
 
+# picked up by scikit-build-core; the default in pyproject.toml is patched out
+export CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_VECTOR_XLA_LIB=${BUILD_VECTOR_XLA_LIB}"
+
 $PYTHON -m pip install . -vv --no-deps --no-build-isolation

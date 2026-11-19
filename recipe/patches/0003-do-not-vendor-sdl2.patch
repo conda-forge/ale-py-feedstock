@@ -1,8 +1,8 @@
 From 2f0d6a6639ce6fc9f58e850a78416ed9ac5fba52 Mon Sep 17 00:00:00 2001
 From: Tobias Fischer <info@tobiasfischer.info>
 Date: Fri, 3 Jul 2026 09:20:00 +1000
-Subject: [PATCH 3/4] do not vendor SDL2 and do not build the jax-dependent XLA
- interface
+Subject: [PATCH 3/4] do not vendor SDL2 and do not build the XLA interface by
+ default (enabled from the build scripts where jax is available)
 
 ---
  pyproject.toml | 8 ++------
