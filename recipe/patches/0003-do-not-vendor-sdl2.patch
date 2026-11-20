@@ -1,29 +1,42 @@
 From 2f0d6a6639ce6fc9f58e850a78416ed9ac5fba52 Mon Sep 17 00:00:00 2001
 From: Tobias Fischer <info@tobiasfischer.info>
 Date: Fri, 3 Jul 2026 09:20:00 +1000
-Subject: [PATCH 3/3] do not vendor SDL2
+Subject: [PATCH 3/4] do not vendor SDL2 and do not build the XLA interface by
+ default (enabled from the build scripts where jax is available)
 
 ---
- pyproject.toml | 2 --
- 1 file changed, 2 deletions(-)
+ pyproject.toml | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index e98d8d1..ce7efa5 100644
+index fbd231f..0d7bea5 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -70,7 +70,6 @@ norecursedirs = ["vcpkg", "build"]
+@@ -1,8 +1,7 @@
+ [build-system]
+ requires = [
+     "scikit-build-core>=0.10",
+-    "nanobind>=2.5.0",
+-    "jax >= 0.4.31"
++    "nanobind>=2.5.0"
+ ]
+ build-backend = "scikit_build_core.build"
+ 
+@@ -73,14 +72,11 @@ testpaths = ["tests"]
+ norecursedirs = ["vcpkg", "build"]
+ 
  [tool.scikit-build]
+-# XLA is enabled by default which requires jax to be installed
  cmake.args = [
      "-DSDL_SUPPORT=ON",
 -    "-DSDL_DYNLOAD=ON",
      "-DBUILD_CPP_LIB=OFF",
      "-DBUILD_PYTHON_LIB=ON",
-     "-DBUILD_VECTOR_LIB=ON"
-@@ -86,7 +85,6 @@ metadata.version.regex = "(?P<value>.+)"
- if.platform-system = "^(win32|linux)"
- cmake.args = [
-     "-DSDL_SUPPORT=ON",
--    "-DSDL_DYNLOAD=ON",
-     "-DBUILD_CPP_LIB=OFF",
-     "-DBUILD_PYTHON_LIB=ON",
-     "-DBUILD_VECTOR_LIB=ON",
+-    "-DBUILD_VECTOR_LIB=ON",
+-    "-DBUILD_VECTOR_XLA_LIB=ON"
++    "-DBUILD_VECTOR_LIB=ON"
+ ]
+ cmake.build-type = "Release"
+ sdist.include = ["src/ale/python/roms/*.bin"]
+-- 
+2.50.1

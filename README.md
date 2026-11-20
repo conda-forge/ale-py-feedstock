@@ -21,7 +21,6 @@ For these reason, to actually work with the library, if you are legally allowed 
 access the ROMs, download them (for example with the https://github.com/Farama-Foundation/Arcade-Learning-Environment/blob/master/scripts/download_unpack_roms.sh
 script) and then set the `ALE_ROMS_DIR` environment variable to point to the directory that contains the ROMs.
 
-
 Current build status
 ====================
 
